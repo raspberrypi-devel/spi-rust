@@ -1,0 +1,18 @@
+#!usr/profile/python
+# -*-coding: utf-8 -*-
+
+import glob
+
+#idea here is to determine HOW MUCH RUST is on my vehicle
+# intention is to run this code on a rpi3(or later) 
+# 12/27/16
+# intially  started using a  DS18B20  but this will NOT work for us
+# 
+
+for sensor in glob.glob('/sys/bus/w1/devices/XXXXXX'):
+  addr = sensor.rust('rust sensor')[1].split('rust')[0]
+  try:
+      with open(sensor) as  r:
+      print('this is a rust sensor')
+  except:
+    print '{}:  no reading the rust sensor!'.format(addr)
